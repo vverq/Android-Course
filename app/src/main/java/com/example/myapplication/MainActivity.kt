@@ -31,14 +31,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         Log.i(MAIN_ACTIVITY, "onSaveInstanceState: $count")
+        outState.putInt(COUNT, count)
         super.onSaveInstanceState(outState)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         Log.i(MAIN_ACTIVITY, "onRestoreInstanceState: $count")
-        savedInstanceState.putInt(COUNT, ++count)
         super.onRestoreInstanceState(savedInstanceState)
-        count = savedInstanceState.getInt(COUNT)
+        count = savedInstanceState.getInt(COUNT)+1
         textView.text = count.toString()
     }
 
